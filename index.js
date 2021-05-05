@@ -3,7 +3,7 @@
 var es = require('event-stream');
 var _ = require('lodash');
 var fs = require('fs');
-var gutil = require('gulp-util');
+var Vinyl = require('vinyl');
 var sassGraph = require('sass-graph');
 var PLUGIN_NAME = 'gulp-sass-inheritance';
 
@@ -45,7 +45,7 @@ function gulpSassInheritance(options) {
           fullpaths.forEach(function (path) {
             if (!_.includes(allPaths, path)) {
               allPaths.push(path);
-              newFiles.push(new gutil.File({
+              newFiles.push(new Vinyl({
                 cwd: file.cwd,
                 base: file.base,
                 path: path,
